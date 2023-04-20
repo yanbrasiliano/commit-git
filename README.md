@@ -7,6 +7,14 @@ The script will prompt you for a commit message and tag name, and will create a 
 <br>
 . Bash shell must be installed on your system
 
+Permission: 
+```sh
+sudo chmod +x commit.sh
+```
+Usage: 
+```sh
+./commit.sh
+```
 ## Notes
 . This script assumes that you are using the default branch (master) to push changes and create tags. If you are using a different branch, you will need to modify the script accordingly.
 <br>
