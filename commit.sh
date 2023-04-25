@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash 
 
 # Add all files to staging
 git add .
@@ -9,6 +9,9 @@ read -p "Enter commit message: " commit_msg
 # Commit changes
 git commit -m "$commit_msg"
 
+# Push changes to remote
+git push
+
 # Get current branch
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
@@ -18,9 +21,9 @@ git push origin $current_branch
 # Prompt to create tag
 read -p "Do you want to create a tag? (y/n) " create_tag
 
-if [[ $create_tag == "y" || $create_tag == "Y" ]]; then
+if [ "$create_tag" = "y" ] || [ "$create_tag" = "Y" ]; then
   # Check if current branch is develop, master, or release/number
-  if [[ $current_branch == "develop" || $current_branch == "master" || $current_branch =~ ^release\/[0-9]+$ ]]; then
+  if [ "$current_branch" = "develop" ] || [ "$current_branch" = "master" ] || [[ "$current_branch" =~ ^release/[0-9]+$ ]]; then
     # Get last tag
     last_tag=$(git describe --abbrev=0 --tags)
 
@@ -47,3 +50,4 @@ if [[ $create_tag == "y" || $create_tag == "Y" ]]; then
 else
   echo "No tag was created. Exiting..."
 fi
+
